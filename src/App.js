@@ -18,27 +18,27 @@ function App({isLogin}) {
   return (
     <Router>
     <div className="App">
-      {isLogin && <Nav />}
+      {isLogin === 'true' && <Nav />}
    <Switch>
-          <Route path="/" exact >
+          <Route path="/my-app" exact >
             <Home />
           </Route>
-          <Route path="/button" >
+          <Route path="/my-app/button" >
             <ButonCss />
           </Route>
-          <Route path="/todo">
+          <Route path="/my-app/todo">
             <TodoList />
           </Route>
-          <Route path="/post" exact>
+          <Route path="/my-app/post" exact>
             <ListPost />
           </Route>
-          <Route path="/post/:id">
+          <Route path="/my-app/post/:id">
             <PostDetail />
           </Route>
-          <Route path="/toast">
+          <Route path="/my-app/toast">
             <ToastMessage />
           </Route>
-          <Route path="/login" >
+          <Route path="/my-app/login" >
             <Login />
           </Route>
   </Switch> 

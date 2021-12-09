@@ -1,8 +1,10 @@
 import React from "react";
 import "./Login.scss";
-import { useState ,useEffect} from "react";
+import { useState ,useEffect,useRef} from "react";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons'
  const Login = ({updateIsLogin,isLogin}) => {
 
     const [error,setError] = useState(false)
@@ -10,7 +12,9 @@ import { connect } from "react-redux";
         username:'',
         password :''
     });
-    
+    const hidePassRef = useRef()
+    const showPassRef = useRef()
+    const passInput = useRef()
     const history = useHistory()
     const userAccout = {
         username: 'DungNM25',
@@ -18,15 +22,15 @@ import { connect } from "react-redux";
     }
     
     useEffect(()=>{
-      if(isLogin){
-        history.push('/')
+      if(isLogin === 'true'){
+        history.push('/my-app/')
       }
     })
     const handleLogin = () =>{
         if(accout.username === userAccout.username && accout.password === userAccout.password){
             updateIsLogin(true)
             localStorage.setItem('isLogin',true)
-            history.push('/')
+            history.push('/my-app/')
         }else{
             setError(true)
         }
@@ -45,9 +49,22 @@ import { connect } from "react-redux";
        handleLogin();
       }
     })
-
+    const handleShowPass = () =>{
+      showPassRef.current.style.display = 'none'
+      hidePassRef.current.style.display = 'block'
+      passInput.current.type = 'text'
+    }
+    const handleHidePass = () =>{
+      showPassRef.current.style.display = 'block'
+      hidePassRef.current.style.display = 'none'
+      passInput.current.type = 'password'
+    }
   return (
       <div className = "login-page">
+        <div className = "user-and-pass">
+        <span>User:DungNM25</span>
+        <span>Pass:123456</span>
+        </div>
     <div className="login-container">
       <h1 className="login-title">Accout Login</h1>
       <div className="login-form">
@@ -62,7 +79,9 @@ import { connect } from "react-redux";
         <label className="login-label" htmlFor=" ">
           PassWord
         </label>
-        <input className="login-input" type = "password"
+        <span onClick = {()=> handleShowPass()} className = "showPassIcon" ref = {showPassRef} ><FontAwesomeIcon icon = {faEye} /> </span>
+        <span onClick = {()=> handleHidePass()} className = "hidePassIcon" ref = {hidePassRef} ><FontAwesomeIcon icon = {faEyeSlash} /></span>
+        <input className="login-input" type = "password" ref = {passInput}
          value = {accout.password} onChange = {e =>handleChangePassWord(e)}   />
          {error && <span className = "login-invalid">username or password is wrong!</span>}
       </div>

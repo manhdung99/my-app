@@ -12,18 +12,18 @@ const  Nav = ({updateIsLogin}) => {
   const handleLogOut = () =>{
     updateIsLogin(false)
     localStorage.setItem('isLogin',false)
-    history.push("/login")
+    history.push("/my-app/login")
   }
 
   return (
     <div className="topnav">
-      <NavLink to="/" activeClassName="active" exact ={true}>
+      <NavLink to="/my-app/" activeClassName="active" exact ={true}>
         Home
       </NavLink>
-      <NavLink to="/button" activeClassName="active">BUTTON HOVER CSS</NavLink>
-      <NavLink to="/todo" activeClassName="active">Todo List</NavLink>
-      <NavLink to="/post" activeClassName="active">POST</NavLink>
-      <NavLink to="/toast" activeClassName="active">Toast Message</NavLink>
+      <NavLink to="/my-app/button" activeClassName="active">BUTTON HOVER CSS</NavLink>
+      <NavLink to="/my-app/todo" activeClassName="active">Todo List</NavLink>
+      <NavLink to="/my-app/post" activeClassName="active">POST</NavLink>
+      <NavLink to="/my-app/toast" activeClassName="active">Toast Message</NavLink>
 
       <div className = "sign-out-btn">
         <span onClick = { () => handleLogOut()}>

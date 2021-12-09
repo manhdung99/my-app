@@ -8,9 +8,9 @@ const  Home = ({isLogin}) =>{
 
     const history = useHistory()
     useEffect(() =>{
-        if(isLogin === false){
-            history.push("/login")
-        }
+      if(isLogin === 'false'){
+        history.push("/my-app/login")
+      }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
