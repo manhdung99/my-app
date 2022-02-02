@@ -3,7 +3,7 @@ import "./ButtonNeon.scss"
 
 export default function ButtonNeon() {
     return (
-        <div className = "neon-button">
+        <div className = " neon-button">
             <button className = 'btn'  >
                 <span className = "btn-span1"></span>
                 <span className = "btn-span2"></span>

@@ -10,8 +10,8 @@ const  Nav = ({updateIsLogin}) => {
 
   const history = useHistory()
   const handleLogOut = () =>{
-    updateIsLogin(false)
-    localStorage.setItem('isLogin',false)
+    updateIsLogin('false')
+    localStorage.setItem('isLogin','false')
     history.push("/my-app/login")
   }
 

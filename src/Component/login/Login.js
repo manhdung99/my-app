@@ -28,8 +28,8 @@ import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons'
     })
     const handleLogin = () =>{
         if(accout.username === userAccout.username && accout.password === userAccout.password){
-            updateIsLogin(true)
-            localStorage.setItem('isLogin',true)
+            updateIsLogin('true')
+            localStorage.setItem('isLogin','true')
             history.push('/my-app/')
         }else{
             setError(true)

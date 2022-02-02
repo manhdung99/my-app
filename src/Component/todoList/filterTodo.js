@@ -16,7 +16,6 @@ export default function FilterTodo({onFilter}) {
             onFilter(e.target.value)
         },1000)
     }
-    console.log(dataFilter)
     return (
         <div>
             <input
